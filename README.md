@@ -9,7 +9,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
   - _TODO: **Ansible-Playbook.yml**
 
 This document contains the following details:
-- Description of the Topologu
+- Description of the Topology
 - Access Policies
 - ELK Configuration
   - Beats in Use
@@ -19,7 +19,7 @@ This document contains the following details:
 
 ### Description of the Topology
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the Damn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly _***Available***____, in addition to restricting _***traffic***____ to the network.
 - _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_***Availability, Web Traffic, Web Security.***
