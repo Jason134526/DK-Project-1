@@ -1,0 +1,202 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title></head><body><h2>Automated ELK Stack Deployment</h2>
+
+<p>The files in this repository were used to configure the network depicted below.</p>
+
+<p><img src="Diagrams/Proj-Diagram.edited.drawio.png" alt="">
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the <em><strong>YAML</strong></em>___ file may be used to install only certain pieces of it, such as Filebeat.</p>
+
+<ul>
+<li> <strong>Ansible-Playbook.yml</strong></li>
+</ul>
+
+<p>This document contains the following details:
+- Description of the Topology
+- Access Policies
+- ELK Configuration
+  - Beats in Use
+  - Machines Being Monitored
+- How to Use the Ansible Build</p>
+
+<h3>Description of the Topology</h3>
+
+<p>The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the Damn Vulnerable Web Application.</p>
+
+<p>Load balancing ensures that the application will be highly <em><strong><em>Available</em></strong></em><strong><em>, in addition to restricting _<strong><em>traffic</em></strong></em></strong>_ to the network.
+-What aspect of security do load balancers protect? What is the advantage of a jump box?_<strong><em>Availability, Web Traffic, Web Security.</em></strong></p>
+
+<p>Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.</p>
+
+<ul>
+<li>What does Filebeat watch for?</li>
+</ul>
+
+<p><strong><em>Logfiles in specified paths or files to indexed for monitoring or reiview</em></strong> </p>
+
+<ul>
+<li>What does Metricbeat record?</li>
+</ul>
+
+<p><strong><em>Metric statistics of a given machine such as memory and CPU usage</em></strong></p>
+
+<p>The configuration details of each machine may be found below.
+<em>Note: Use the <a href="http://www.tablesgenerator.com/markdown_tables">Markdown Table Generator</a> to add/remove values from the table</em>.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Function</th>
+<th>IP Address</th>
+<th>Operating System</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Jump Box</td>
+<td>Gateway</td>
+<td>10.0.0.4</td>
+<td>Linux</td>
+</tr>
+<tr>
+<td>WEB1</td>
+<td>Web Server</td>
+<td>10.0.0.5</td>
+<td>Linux</td>
+</tr>
+<tr>
+<td>WEB2</td>
+<td>Web Server</td>
+<td>10.0.0.6</td>
+<td>Linux</td>
+</tr>
+<tr>
+<td>ELK</td>
+<td>ELK Server</td>
+<td>10.1.0.4</td>
+<td>Linux</td>
+</tr>
+</tbody></table>
+
+<h3>Access Policies</h3>
+
+<p>The machines on the internal network are not exposed to the public Internet. </p>
+
+<p>Only the <strong>Jumpbox</strong>_ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:</p>
+
+<ul>
+<li>addresses_<strong><em>47.36.48.32</em></strong></li>
+</ul>
+
+<p>Machines within the network can only be accessed by <strong>SSH</strong>_.</p>
+
+<ul>
+<li>Which machine did you allow to access your ELK VM? What was its IP address?</li>
+</ul>
+
+<p><strong><em>Jump-Box-Provisioner(10.0.0.4 via SSH :22) , Workstation Public IP (47.36.48.32)</em></strong></p>
+
+<p>A summary of the access policies in place can be found in the table below.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Publicly Accessible</th>
+<th>Allowed IP Addresses</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Jump Box</td>
+<td>No</td>
+<td>47.36.48.32</td>
+</tr>
+<tr>
+<td>Web1</td>
+<td>No</td>
+<td>10.0.0.4</td>
+</tr>
+<tr>
+<td>Web2</td>
+<td>No</td>
+<td>10.0.0.4</td>
+</tr>
+<tr>
+<td>Elk</td>
+<td>No</td>
+<td>47.36.48.32</td>
+</tr>
+</tbody></table>
+
+<h3>Elk Configuration</h3>
+
+<p>Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because&hellip;
+- What is the main advantage of automating configuration with Ansible?</p>
+
+<p><strong><em><strong>Ansible allows efficient deployment of listed tasks by configuring a playbook file to get a machine to automate a set of tasks specified in the configured playbook.</strong>_</em></strong></p>
+
+<p>The playbook implements the following tasks:</p>
+
+<ul>
+<li><p>In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._</p>
+
+<ul>
+<li><strong>Configure machines for installation and remote          user addresses</strong></li>
+<li><strong>Increase system memory</strong></li>
+<li><strong>install docker.io, python3-pip, and docker module.</strong></li>
+</ul></li>
+</ul>
+
+<p>The following screenshot displays the result of running <code>docker ps</code> after successfully configuring the ELK instance.</p>
+
+<p><img src="Ansible/Project-SS/sebp-ek-SS.png" alt=""></p>
+
+<h3>Target Machines &amp; Beats</h3>
+
+<p>This ELK server is configured to monitor the following machines:
+- List the IP addresses of the machines you are monitoring_<strong><em>10.0.0.5, 10.0.0.6</em></strong></p>
+
+<p>We have installed the following Beats on these machines:</p>
+
+<ul>
+<li><strong><em>Filebeat, Metricbeat</em></strong></li>
+</ul>
+
+<p>These Beats allow us to collect the following information from each machine:</p>
+
+<ul>
+<li><strong><em>Filebeat collects desired log data from services such as winglogbeat which logs and ships Windows event logs into the ELK stack for monitoring/analysis.. Metricbeat will collect and ship data associated with the hosts metric data such as CPU and memory metrics and much more.</em></strong></li>
+</ul>
+
+<h3>Using the Playbook</h3>
+
+<p>In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: </p>
+
+<p>SSH into the control node and follow the steps below:</p>
+
+<ul>
+<li><p>Copy the <em>playbook</em> file to <em>web1 &amp;2</em>__.</p></li>
+<li><p>Update the <em>config</em>___ file to include. web1 &amp;2</p></li>
+<li><p>Run the playbook, and navigate to <em>./ansible</em>_ to check that the installation worked as expected.</p></li>
+<li><p>_Which file is the playbook? Where do you copy it?</p>
+
+<ul>
+<li><strong>install-elk.yml to Web1 Web2</strong></li>
+</ul></li>
+<li><p>_Which file do you update to make Ansible run the 
+playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?</p>
+
+<ul>
+<li><strong>filebeat-config.yml, and specify host ip address and ports for output.elasticsearch and setup.kibana</strong> </li>
+</ul></li>
+<li><p>_Which URL do you navigate to in order to check that the ELK server is running?</p>
+
+<ul>
+<li><strong>http://13.82.139.31:5601/app/kibana</strong></li>
+</ul></li>
+</ul>
+
+<p><em>As a <strong>Bonus</strong>, provide the specific commands the user will need to run to download the playbook, update the files, etc.</em></p>
+
+<pre><code>    curl -L -O &lt;path to playbook&gt;
+    nano &lt;file to update&gt;
+    ansible-playbook &lt;playbook yaml&gt;
+    ansible &lt;remote server&gt; -m copy -a &quot;src=&lt;sourcepath&gt; dest=&lt;destinationpath&gt; owner=&lt;owner&gt; group=&lt;group&gt; mode=0644&quot;
+</code></pre>
+</body></html>
